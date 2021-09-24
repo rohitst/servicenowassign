@@ -21,7 +21,9 @@ class ReviewListActivity : AppCompatActivity() {
         binding = inflate(layoutInflater)
         val view = binding.root
 
-        val adapter = ReviewAdapter()
+        val adapter = ReviewAdapter { review ->
+            startActivity(ReviewDetailActivity.makeIntent(baseContext, review))
+        }
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
         binding.recyclerView.adapter = adapter
@@ -33,7 +35,7 @@ class ReviewListActivity : AppCompatActivity() {
 
 }
 
-class ReviewAdapter : ListAdapter<Review, ReviewAdapter.ViewHolder>(ReviewDiffCallback()) {
+class ReviewAdapter(private val clickCallBack : (Review) -> Unit) : ListAdapter<Review, ReviewAdapter.ViewHolder>(ReviewDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
@@ -44,15 +46,17 @@ class ReviewAdapter : ListAdapter<Review, ReviewAdapter.ViewHolder>(ReviewDiffCa
 
 
     override fun onBindViewHolder(holder: ReviewAdapter.ViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), clickCallBack)
     }
 
     class ViewHolder(private val binding: ReviewItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(review: Review) {
+        fun bind(review: Review, clickCallBack: (Review) -> Unit) {
             binding.image.setImageResource(Review.getIconResourceFromName(review.name))
             binding.text1.text = review.name
             binding.text2.text = review.review
+
+            itemView.setOnClickListener { clickCallBack(review) }
         }
     }
 
