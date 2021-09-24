@@ -14,7 +14,6 @@ class Review(
     }
 
     companion object {
-        @JvmStatic
         fun getIconResourceFromName(name: String): Int {
             when (name) {
                 "Lofty" -> return R.drawable.bean_bag
