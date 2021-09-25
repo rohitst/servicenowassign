@@ -17,7 +17,7 @@
         >
         <!--TODO networkSecurityConfig should be disabled in production after ssl issues are fixed-->
 
-        <activity android:name="com.servicenow.exercise_kotlin.ReviewListActivity">
+        <activity android:name="com.servicenow.ui.reviewlist.ReviewListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
