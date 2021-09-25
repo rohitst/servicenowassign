@@ -76,8 +76,12 @@ class ReviewAdapter(private val clickCallBack : (Review) -> Unit) : ListAdapter<
         RecyclerView.ViewHolder(binding.root) {
         fun bind(review: Review, clickCallBack: (Review) -> Unit) {
             binding.image.setImageResource(Review.getIconResourceFromName(review.name))
-            binding.text1.text = review.name
-            binding.text2.text = review.review
+            binding.reviewItemNameTextview.text = review.name
+
+            //Show emoki rating stars instead of rating :)
+            //binding.reviewItemRatingTextview.text = "${review.rating}/5"
+            binding.reviewItemRatingTextview.text = "⭐".repeat(review.rating)
+            binding.reviewItemReviewTextview.text = review.review
 
             itemView.setOnClickListener { clickCallBack(review) }
         }
