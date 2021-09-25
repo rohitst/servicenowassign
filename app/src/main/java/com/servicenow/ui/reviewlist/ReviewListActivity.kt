@@ -9,7 +9,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.servicenow.exercise.databinding.ActivityReviewListBinding
 import com.servicenow.exercise.databinding.ActivityReviewListBinding.inflate
 import com.servicenow.ui.reviewdetail.ReviewDetailActivity
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class ReviewListActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityReviewListBinding

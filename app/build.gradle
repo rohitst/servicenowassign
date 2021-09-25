@@ -38,7 +38,8 @@ dependencies {
 
     def lifecycle_version = "2.3.1"
     def navigation_version = "2.3.5"
-    def hilt_androidx_version = "1.0.0-alpha03"
+    def hilt = "2.38.1"
+    def hilt_lifecycle_viewmodel = "1.0.0-alpha03"
 
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -67,11 +68,11 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
     // DI - Hilt
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
+    implementation "com.google.dagger:hilt-android:$hilt"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
     // DI - Hilt - extensions
-    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_androidx_version"
-    kapt "androidx.hilt:hilt-compiler:$hilt_androidx_version"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hilt_lifecycle_viewmodel"
+    kapt "androidx.hilt:hilt-compiler:$hilt_lifecycle_viewmodel"
 
     // Navigation
     implementation "androidx.navigation:navigation-runtime-ktx:$navigation_version"

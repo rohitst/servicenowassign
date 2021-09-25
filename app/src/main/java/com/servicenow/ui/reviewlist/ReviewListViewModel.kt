@@ -4,15 +4,18 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.servicenow.model.Review
 import com.servicenow.repository.ReviewsRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import javax.inject.Inject
 
-class ReviewListViewModel : ViewModel() {
+@HiltViewModel
+class ReviewListViewModel @Inject constructor(
+    private val repository: ReviewsRepository
+) : ViewModel() {
 
     var viewState : MutableLiveData<ReviewListViewState> = MutableLiveData()
-
-    val repository = ReviewsRepository() //TODO Inject
 
     private var disposables: MutableList<Disposable> = mutableListOf()
     init {
