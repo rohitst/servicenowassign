@@ -1,6 +1,6 @@
 package com.servicenow.api
 
-import com.servicenow.coffee.Review
+import com.servicenow.model.Review
 import io.reactivex.Single
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory

@@ -1,11 +1,11 @@
-package com.servicenow.exercise_kotlin
+package com.servicenow.ui.reviewdetail
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.servicenow.coffee.Review
+import com.servicenow.model.Review
 import com.servicenow.exercise.databinding.ActivityReviewDetailBinding
 import java.lang.IllegalArgumentException
 

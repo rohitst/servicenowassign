@@ -7,15 +7,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.*
 import com.servicenow.api.RetrofitBuilder
-import com.servicenow.coffee.Review
+import com.servicenow.model.Review
 import com.servicenow.exercise.databinding.ActivityReviewListBinding
 import com.servicenow.exercise.databinding.ActivityReviewListBinding.inflate
 import com.servicenow.exercise.databinding.ReviewItemBinding
+import com.servicenow.ui.reviewdetail.ReviewDetailActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 
 class ReviewListActivity : AppCompatActivity() {
 

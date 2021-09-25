@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.servicenow.exercise_kotlin.ReviewDetailActivity">
+        <activity android:name="com.servicenow.ui.reviewdetail.ReviewDetailActivity">
 
         </activity>
 
