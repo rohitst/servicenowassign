@@ -1,5 +1,6 @@
 package com.servicenow.coffee
 
+/*
 object CoffeeShopReviews {
     val list = arrayOf(
         Review(
@@ -33,4 +34,4 @@ object CoffeeShopReviews {
             "1909 Garnet Ave, San Diego, CA 92109"
         )
     )
-}
+}*/

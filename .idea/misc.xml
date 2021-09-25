@@ -7,6 +7,7 @@
         <entry key="app/src/main/res/layout/activity_review_detail.xml" value="0.3125" />
         <entry key="app/src/main/res/layout/activity_review_list.xml" value="0.1" />
         <entry key="app/src/main/res/layout/review_item.xml" value="0.23429584599797365" />
+        <entry key="app/src/main/res/xml/network_security_config.xml" value="0.159375" />
       </map>
     </option>
   </component>

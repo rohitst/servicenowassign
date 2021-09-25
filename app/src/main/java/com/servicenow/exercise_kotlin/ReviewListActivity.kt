@@ -3,13 +3,19 @@ package com.servicenow.exercise_kotlin
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.*
-import com.servicenow.coffee.CoffeeShopReviews
+import com.servicenow.api.RetrofitBuilder
 import com.servicenow.coffee.Review
 import com.servicenow.exercise.databinding.ActivityReviewListBinding
 import com.servicenow.exercise.databinding.ActivityReviewListBinding.inflate
 import com.servicenow.exercise.databinding.ReviewItemBinding
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class ReviewListActivity : AppCompatActivity() {
 
@@ -28,7 +34,24 @@ class ReviewListActivity : AppCompatActivity() {
         binding.recyclerView.addItemDecoration(DividerItemDecoration(binding.recyclerView.context, DividerItemDecoration.VERTICAL))
         binding.recyclerView.adapter = adapter
 
-        adapter.submitList(CoffeeShopReviews.list.toMutableList()) //initial reviews data for list.
+        //TODO cancellable disposable
+        //TODO proper error states and UI
+        val disposable = RetrofitBuilder.apiService.getReviews()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+            { reviews ->
+                adapter.submitList(reviews.toMutableList())
+
+            }, { error ->
+                Toast.makeText(this, "Error getting reviews", Toast.LENGTH_SHORT).show()
+            }
+
+        )
+
+
+
+
 
         setContentView(view)
     }
