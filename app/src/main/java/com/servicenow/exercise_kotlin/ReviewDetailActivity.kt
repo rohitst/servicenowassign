@@ -3,6 +3,7 @@ package com.servicenow.exercise_kotlin
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.servicenow.coffee.Review
 import com.servicenow.exercise.databinding.ActivityReviewDetailBinding
@@ -58,8 +59,21 @@ class ReviewDetailActivity : AppCompatActivity() {
         binding.name.text = review.name
         binding.reviewText.text = review.review
         binding.location.text = review.location
+        binding.rating.text = "⭐".repeat(review.rating)
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
 
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
