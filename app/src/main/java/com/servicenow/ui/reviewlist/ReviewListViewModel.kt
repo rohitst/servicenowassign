@@ -1,10 +1,9 @@
 package com.servicenow.ui.reviewlist
 
-import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.servicenow.api.RetrofitBuilder
 import com.servicenow.model.Review
+import com.servicenow.repository.ReviewsRepository
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -13,6 +12,8 @@ class ReviewListViewModel : ViewModel() {
 
     var viewState : MutableLiveData<ReviewListViewState> = MutableLiveData()
 
+    val repository = ReviewsRepository() //TODO Inject
+
     private var disposables: MutableList<Disposable> = mutableListOf()
     init {
         refresh()
@@ -20,7 +21,7 @@ class ReviewListViewModel : ViewModel() {
 
     fun refresh() {
         viewState.postValue(ReviewListViewState(UILoadingState.refreshing, null))
-        disposables += RetrofitBuilder.apiService.getReviews()
+        disposables += repository.getAllReviews()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(

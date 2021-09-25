@@ -1,5 +1,6 @@
 package com.servicenow.model
 
+import com.servicenow.api.ApiReview
 import com.servicenow.exercise.R
 
 data class Review(
@@ -23,6 +24,13 @@ data class Review(
                 "Better Buzz Coffee" -> return R.drawable.coffee_shop
             }
             return -1
+        }
+
+        //Mapper function from network model to domain model
+        fun fromApiModel(apiReview: ApiReview) : Review {
+            return Review(
+                apiReview.name, apiReview.review, apiReview.rating, apiReview.location
+            )
         }
     }
 }
